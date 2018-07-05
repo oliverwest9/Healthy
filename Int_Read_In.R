@@ -27,4 +27,19 @@ FU_Saved <- round(as.data.frame((data_input$FU_Redn)*(data_input$Y1)))
 for (i in 1:Years)
 {
   FU_Saved$Years <- round(data_input$FU_Redn*Soc_Growth$Years)
-  }
+}
+
+#Calculate cost per a year. [Needs to be finished]
+Cost_Saved <- as.data.frame(data_input$Cost*data_input$Y1);
+
+for (i in 1:Years)
+{
+  #Cost_Saved$Years <- round(Cost_Saved$
+}
+
+#Calculate Growth Rates for secondary effects of intiatives, [Incomplete]
+Diag_Saved_1 <- round(as.data.frame(data_input$Prob1*data_input$Y1))
+for (i in 2:Years)
+{
+  Diag_Saved_1[,i] <- round(Diag_Saved_1[,i-1]*Soc_Growth[,i])
+}
