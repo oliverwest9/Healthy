@@ -43,3 +43,13 @@ for (i in 2:Years)
 {
   Diag_Saved_1[,i] <- round(Diag_Saved_1[,i-1]*Soc_Growth[,i])
 }
+Diag_Saved_2 <- round(as.data.frame(data_input$Prob2*data_input$Y1))
+for (i in 2:Years)
+{
+  Diag_Saved_2[,i] <- round(Diag_Saved_2[,i-1]*Soc_Growth[,i])
+}
+Diag_Saved_3 <- round(as.data.frame(data_input$Prob3*data_input$Y1))
+for (i in 2:Years)
+{
+  Diag_Saved_3[,i] <- round(Diag_Saved_3[,i-1]*Soc_Growth[,i])
+}
