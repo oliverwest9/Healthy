@@ -37,7 +37,8 @@ for (i in 1:Years)
   #Cost_Saved$Years <- round(Cost_Saved$
 }
 
-#Calculate Growth Rates for secondary effects of intiatives, [Incomplete]
+#Calculate Growth Rates for secondary effects of intiatives, [Tempremental, make sure you download excel input
+#sheet from Git]
 Diag_Saved_1 <- round(as.data.frame(data_input$Prob1*data_input$Y1))
 for (i in 2:Years)
 {
