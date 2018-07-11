@@ -1,4 +1,3 @@
-##data handling practice##
 
 #install requared pachages
 library(tidyverse)

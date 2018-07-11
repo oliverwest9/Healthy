@@ -21,23 +21,17 @@ for (i in 1:NSpeciality){
 
 #R-AA
 #need to load in Soc_pres and Output(sheet1) data for this part:
+New_Diag_Soc <- as.data.frame((OP_Data$New));
+colnames(New_Diag_Soc) <- ("Y1");
+Index <- as.data.frame(c(1:NSpeciality));
 
-Output <- readWorksheetFromFile('input_data.xlsx', sheet = 4, header = TRUE) %>%
-  mutate(Specialty = factor(Specialty), Initiative = factor(Initiative), New_saved_2 = factor(New_saved_2), 
-         New_saved_3 = factor(New_saved_3))
-
-New_Diagnoses <- matrix(nrow = NSpeciality ,ncol = Projection_length)
-colnames(New_Diagnoses) <- c(paste("Year",1:Projection_length ))
-
-for (i in 1:NSpeciality){
-  for (j in 1:Projection_length){
-    New_Diagnoses[i,j] = OP_Data[i,j+1]  
-  }
+for( i in 1:NSpeciality)
+{
+  Index[i,1] <- which(data_input$Spec1 == data_input[i,8])
+  Index[i,2] <- which(data_input$Spec2 == data_input[i,8])
+  Index[i,3] <- which(data_input$Spec3 == data_input[i,8])
 }
 
-
-Aftercare<- matrix(nrow = NSpeciality ,ncol = Projection_length)
-colnames(New_Diagnoses) <- c(paste("Year",1:Projection_length ))
 
 #AB-AG
 New_FU

@@ -4,7 +4,6 @@ Spec_input <- read.csv(file="Specialty.csv", header=TRUE)
 #Index function for specialities, [To Avoid Working with Character Strings]
 Spec_index <- function(Spec_No){
   Speciality_Char <- na.omit(Spec_input[Spec_input$Int_No == 2,]);
-  R
   return(toString(Speciality_Char[1,1]))
 }
 
