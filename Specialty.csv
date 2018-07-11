@@ -9,34 +9,34 @@ Lung LRTI,7
 Lung Pleuracy,8
 Vaccination flu,9
 Vaccination paeds,10
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+Vaccination travel,11
+Mental Health depression,12
+Mental Health bipolar,13
+Mental Health anxiety,14
+Mental Health stress,15
+Brain Dementia,16
+Brain Stroke,17
+Falls minor,18
+Falls medium,19
+Falls major,20
+Muscular minor,21
+Muscular medium,22
+Muscular major,23
+Other trauma minor,24
+Other trauma medium,25
+Other trauma major,26
+Arthritis Osteo,27
+Arthritis Rheumatoid,28
+Rehabilitation,29
+Cancer Brain,30
+Cancer Breast,31
+Cancer ENT,32
+Cancer UGI,33
+Cancer LGI,34
+Cancer Liver,35
+Cancer Kidney,36
+Cancer Pancreas,37
+Cancer Blood,38
+Bowel Disorders,39
+Gynaecology,40
+Paeds General,41

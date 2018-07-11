@@ -14,6 +14,17 @@ Npopulation <- 10
 data_input <- read.csv(file="data_input.csv", header=TRUE) %>%
   mutate(site = factor(site))
 
+#Read in Specialities List
+Spec_input <- read.csv(file="Specialty.csv", header=TRUE)
+
+#Set Up Factors for specialities. [Will work when full list of specialities is loaded in.]
+data_input$Speciality <- factor(data_input$Speciality, levels = Spec_input[,1]);
+data_input$Spec1 <- factor(data_input$Spec1, levels = Spec_input[,1]);
+data_input$Spec2 <- factor(data_input$Spec2, levels = Spec_input[,1]);
+data_input$Spec3 <- factor(data_input$Spec3, levels = Spec_input[,1]);
+
+
+
 #calculte the distance between sites
 distance <- matrix(nrow = NSites, ncol = NSites)
 
