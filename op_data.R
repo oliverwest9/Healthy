@@ -3,8 +3,8 @@
 library(tidyverse);
 library(readxl);
 
-OP_Data <- read_excel('input_data_2.xlsx', sheet = 3) %>%
-  mutate(Specialty = factor(Specialty))
+#[Note: Factors temp removed, due to not all specialities being used currently, so factor comparisons fails].
+OP_Data <- read_excel('input_data_2.xlsx', sheet = 3)
 
 NSpeciality <- nrow(OP_Data)
 Projection_length <- 5
@@ -25,13 +25,27 @@ New_Diag_Soc <- as.data.frame((OP_Data$New));
 colnames(New_Diag_Soc) <- ("Y1");
 Index <- as.data.frame(c(1:NSpeciality));
 
-for( i in 1:NSpeciality)
+
+for (i in 1:NSpeciality)
 {
-  Index[i,1] <- which(data_input$Spec1 == data_input[i,8])
-  Index[i,2] <- which(data_input$Spec2 == data_input[i,8])
-  Index[i,3] <- which(data_input$Spec3 == data_input[i,8])
+  if(as.character(OP_Data[i,1]) == as.character(data_input[i,14])){
+    Sub_1 <- filter(Diag_Saved_1,Diag_Saved_1[,1] == as.character(OP_Data[i,1]));
+    New_Diag_Soc[i,1] <- New_Diag_Soc[i,1] - Sub_1[1,2];
+  }
 }
 
+for (i in 1:NSpeciality)
+{
+  if(as.character(OP_Data[i,1]) == as.character(data_input[i,16])){
+    Test <- 1;
+    Sub_2 <- filter(Diag_Saved_2,Diag_Saved_2[,1] == as.character(OP_Data[i,1]));
+    New_Diag_Soc[i,1] <- New_Diag_Soc[i,1] - Sub_2[1,2];
+  }
+  
+}
+
+
+New_Diag_Soc$Y1 <- New_Diag_Soc$Y1 -
 
 #AB-AG
 New_FU

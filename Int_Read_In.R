@@ -18,10 +18,11 @@ for (i in 1:Years)
 }
 
 #Short Term Fix, to unknown problem.
-Soc_Growth <- Soc_Growth[1,2] 
+Soc_Growth <- Soc_Growth[1,2] ;
+Soc_Growth <- cbind(Y1 =5, Soc_Growth);
 
 #Calculate Follow Up Reductions Saved
-FU_Saved <- round(as.data.frame((data_input$FU_Redn)*(data_input$Y1)))
+FU_Saved <- round(as.data.frame((data_input$FU_Redn)*(data_input$Y1)));
 
 for (i in 1:Years)
 {
@@ -46,6 +47,9 @@ for (i in 1:Years)
   Counter <- Counter+1;
 }
 
+Diag_Saved_1 <- cbind(data_input$Spec1, Diag_Saved_1);
+Diag_Saved_1[,2] <- NULL;
+
 #Calculate Growth Rates for secondary effects of intiatives.
 Counter <- 1;
 Diag_Saved_2 <- round(as.data.frame(data_input$Y1*data_input$Prob2));
@@ -55,6 +59,8 @@ for (i in 1:Years)
   Diag_Saved_2[,Counter+1] <- round(Soc_Growth[,Counter]*data_input$Prob2)
   Counter <- Counter+1;
 }
+Diag_Saved_2 <- cbind(data_input$Spec2, Diag_Saved_2);
+Diag_Saved_2[,2] <- NULL;
 
 #Calculate Growth Rates for secondary effects of intiatives.
 Counter <- 1;
@@ -66,3 +72,5 @@ for (i in 1:Years)
   Counter <- Counter+1;
 }
 
+Diag_Saved_3 <- cbind(data_input$Spec3, Diag_Saved_3);
+Diag_Saved_3[,2] <- NULL;
