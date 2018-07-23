@@ -3,49 +3,67 @@
 library(tidyverse);
 library(readxl);
 
-#[Note: Factors temp removed, due to not all specialities being used currently, so factor comparisons fails].
-OP_Data <- read_excel('input_data_2.xlsx', sheet = 3)
-
+#Set Variables Up.
 NSpeciality <- nrow(OP_Data)
 Projection_length <- 5
 
-#M-P
+#M-P [Hard Coded At the Moment.]
 Growth <- matrix(nrow = NSpeciality, ncol = Projection_length ) 
-colnames(Growth) <- c(paste("Growth",1:Projection_length ))
+Growth[,1] <- 0.020;
+Growth[,2] <- 0.020;
+Growth[,3] <- 0.015;
+Growth[,4] <- 0.015;
+Growth[,5] <- 0.01;
 
+
+
+#R-W
+#Calculate New Diagnoses Saved Year on Year.
+#Calculate Total Saved from Effect 1 of Intiatives.
+Saved_1 <- matrix(nrow = NSpeciality, ncol = Projection_length);
 for (i in 1:NSpeciality){
-  for (j in 1:Projection_length ){
-    Growth[i,j] =(OP_Data[i,12] * 200/(200 + OP_Data[i,j+6] - OP_Data[i,j+5]) - 1)
+  for (j in 1:NSpeciality){
+    if (OP_Data[i,1] == as.character(data_input[j,14])){
+      for (k in 1:Projection_length){
+        Saved_1[i,k] <- Diag_Saved_1[j,k] ;
+      }
+    }
   }
 }
+#Calculate Total Saved from Effect 2 of Intiatives.
+Saved_2 <- matrix(nrow = NSpeciality, ncol = Projection_length);
+for (i in 1:NSpeciality){
+  for (j in 1:NSpeciality){
+    if (OP_Data[i,1] == as.character(data_input[j,16])){
+      for (k in 1:Projection_length){
+        Saved_2[i,k] <- Diag_Saved_2[j,k] ;
+      }
+    }
+  }
+}
+#Calculate Total Saved from Effect 3 of Intiatives.
+Saved_3 <- matrix(nrow = NSpeciality, ncol = Projection_length);
+for (i in 1:NSpeciality){
+  for (j in 1:NSpeciality){
+    if (OP_Data[i,1] == as.character(data_input[j,18])){
+      for (k in 1:Projection_length){
+        Saved_3[i,k] <- Diag_Saved_3[j,k] ;
+      }
+    }
+  }
+}
+#Sum Together all 3 effects.
+Saved_Tot <- Saved_1 + Saved_2 + Saved_3;
+Saved_Tot[is.na(Saved_Tot)] <- 0
 
-#R-AA
-#need to load in Soc_pres and Output(sheet1) data for this part:
-New_Diag_Soc <- as.data.frame((OP_Data$New));
-colnames(New_Diag_Soc) <- ("Y1");
-Index <- as.data.frame(c(1:NSpeciality));
+New_Diag_SP <- matrix(nrow = NSpeciality, ncol = Projection_length);
+New_Diag_SP[,1] <- OP_Data$New - Saved_Tot[,1];
 
-
-for (i in 1:NSpeciality)
+#Include Growth of effect and produce projection.
+for(i in 2:Projection_length)
 {
-  if(as.character(OP_Data[i,1]) == as.character(data_input[i,14])){
-    Sub_1 <- filter(Diag_Saved_1,Diag_Saved_1[,1] == as.character(OP_Data[i,1]));
-    New_Diag_Soc[i,1] <- New_Diag_Soc[i,1] - Sub_1[1,2];
-  }
+  New_Diag_SP[,i] <- round((New_Diag_SP[,i-1]*(1+ Growth[,i-1])) -Saved_Tot[,i]);
 }
-
-for (i in 1:NSpeciality)
-{
-  if(as.character(OP_Data[i,1]) == as.character(data_input[i,16])){
-    Test <- 1;
-    Sub_2 <- filter(Diag_Saved_2,Diag_Saved_2[,1] == as.character(OP_Data[i,1]));
-    New_Diag_Soc[i,1] <- New_Diag_Soc[i,1] - Sub_2[1,2];
-  }
-  
-}
-
-
-New_Diag_Soc$Y1 <- New_Diag_Soc$Y1 -
 
 #AB-AG
 New_FU
