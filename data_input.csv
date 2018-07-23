@@ -1,11 +1,42 @@
 site,site_x,site_y,population node,pop_x,pop_y,size,Speciality,No,FU_Redn,Cost,Growth,Y1,Spec1,Prob1,Spec2,Prob2,Spec3,Prob3
-site1,180188.418,37011.66209,name1,245016.531,148963.4466,69,Lung Asthma,1,0.58,100,1.25,5,Lung Asthma,0.53,Paeds General,0.48,Cancer Blood,0.48
-site2,223881.483,137473.8645,name2,225430.6266,196013.7722,90,Lung COPD,2,0.25,100,1.25,5,Lung COPD,0.26,Lung Asthma,0.84,Bowel Disorders,0.88
-site3,48834.2978,45009.37986,name3,14329.67334,19873.89379,20,Lung Emphasema,3,0.49,100,1.25,5,Lung Emphasema,0.96,Lung COPD,0.04,Gynaecology,0.81
-site4,239309.9373,101252.8903,name4,111907.499,109198.4663,82,Lung Spirometry,4,1.00,100,1.25,5,Lung Spirometry,0.50,Lung Emphasema,0.19,Paeds General,0.43
-site5,232851.5786,26973.25741,name5,214777.7253,95445.70862,99,Lung Peak flow/Review,5,0.84,100,1.25,5,Lung Peak flow/Review,0.94,Lung Spirometry,0.97,Lung Asthma,0.70
-site6,246492.8932,87997.69483,name6,69170.25646,226932.392,6,Lung URTI,6,0.29,100,1.25,5,Lung URTI,0.48,Lung Peak flow/Review,0.24,Lung COPD,0.35
-site7,78217.32109,224303.3616,name7,92354.81873,205838.2676,81,Lung LRTI,7,0.40,100,1.25,5,Lung LRTI,0.62,Lung URTI,0.58,Lung Emphasema,0.44
-site8,102065.0493,137801.6724,name8,86988.42145,203525.3094,40,Lung Pleuracy,8,0.67,100,1.25,5,Lung Pleuracy,0.66,Lung LRTI,0.77,Lung Spirometry,0.92
-site9,248808.08,189392.523,name9,25383.23372,117168.1104,13,Vaccination flu,9,0.66,100,1.25,5,Vaccination flu,0.45,Lung Pleuracy,0.89,Lung Peak flow/Review,0.50
-site10,145902.5388,21493.59951,name10,51870.20351,123005.2865,66,Vaccination paeds,10,0.07,100,1.25,5,Vaccination paeds,0.14,Vaccination flu,0.13,Lung URTI,0.24
+site1,180188.418,37011.66209,name1,245016.531,148963.4466,69,Lung Asthma,initiative1,0.58,100,0.25,5,Lung Asthma,0.53,Paeds General,0.48,Cancer Blood,0.48
+site2,223881.483,137473.8645,name2,225430.6266,196013.7722,90,Lung COPD,initiative2,0.25,100,0.25,5,Lung COPD,0.26,Lung Asthma,0.84,Bowel Disorders,0.88
+site3,48834.2978,45009.37986,name3,14329.67334,19873.89379,20,Lung Emphasema,initiative3,0.49,100,0.25,5,Lung Emphasema,0.96,Lung COPD,0.04,Gynaecology,0.81
+site4,239309.9373,101252.8903,name4,111907.499,109198.4663,82,Lung Spirometry,initiative4,1.00,100,0.25,5,Lung Spirometry,0.50,Lung Emphasema,0.19,Paeds General,0.43
+site5,232851.5786,26973.25741,name5,214777.7253,95445.70862,99,Lung Peak flow/Review,initiative5,0.84,100,0.25,5,Lung Peak flow/Review,0.94,Lung Spirometry,0.97,Lung Asthma,0.70
+site6,246492.8932,87997.69483,name6,69170.25646,226932.392,6,Lung URTI,initiative6,0.29,100,0.25,5,Lung URTI,0.48,Lung Peak flow/Review,0.24,Lung COPD,0.35
+site7,78217.32109,224303.3616,name7,92354.81873,205838.2676,81,Lung LRTI,initiative7,0.40,100,0.25,5,Lung LRTI,0.62,Lung URTI,0.58,Lung Emphasema,0.44
+site8,102065.0493,137801.6724,name8,86988.42145,203525.3094,40,Lung Pleuracy,initiative8,0.67,100,0.25,5,Lung Pleuracy,0.66,Lung LRTI,0.77,Lung Spirometry,0.92
+site9,248808.08,189392.523,name9,25383.23372,117168.1104,13,Vaccination flu,initiative9,0.66,100,0.25,5,Vaccination flu,0.45,Lung Pleuracy,0.89,Lung Peak flow/Review,0.50
+site10,145902.5388,21493.59951,name10,51870.20351,123005.2865,66,Vaccination paeds,initiative10,0.07,100,0.25,5,Vaccination paeds,0.14,Vaccination flu,0.13,Lung URTI,0.24
+,,,,,,,Vaccination travel,initiative11,0.44,100,0.25,5,Vaccination travel,0.45,Vaccination paeds,0.25,Lung LRTI,0.59
+,,,,,,,Mental Health depression,initiative12,0.62,100,0.25,5,Mental Health depression,0.04,Vaccination travel,0.97,Lung Pleuracy,0.95
+,,,,,,,Mental Health bipolar,initiative13,0.12,100,0.25,5,Mental Health bipolar,0.44,Mental Health depression,0.96,Vaccination flu,0.45
+,,,,,,,Mental Health anxiety,initiative14,0.05,100,0.25,5,Mental Health anxiety,0.01,Mental Health bipolar,0.48,Vaccination paeds,0.14
+,,,,,,,Mental Health stress,initiative15,0.32,100,0.25,5,Mental Health stress,0.71,Mental Health anxiety,0.22,Vaccination travel,0.69
+,,,,,,,Brain Dementia,initiative16,0.17,100,0.25,5,Brain Dementia,0.75,Mental Health stress,0.47,Mental Health depression,0.15
+,,,,,,,Brain Stroke,initiative17,0.82,100,0.25,5,Brain Stroke,0.26,Brain Dementia,0.88,Mental Health bipolar,0.89
+,,,,,,,Falls minor,initiative18,0.96,100,0.25,5,Falls minor,0.16,Brain Stroke,0.21,Mental Health anxiety,0.71
+,,,,,,,Falls medium,initiative19,0.04,100,0.25,5,Falls medium,0.86,Falls minor,0.65,Mental Health stress,0.54
+,,,,,,,Falls major,initiative20,0.69,100,0.25,5,Falls major,0.24,Falls medium,0.40,Brain Dementia,0.74
+,,,,,,,Muscular minor,initiative21,0.32,100,0.25,5,Muscular minor,0.81,Falls major,0.39,Brain Stroke,0.08
+,,,,,,,Muscular medium,initiative22,0.16,100,0.25,5,Muscular medium,0.56,Muscular minor,0.84,Falls minor,0.82
+,,,,,,,Muscular major,initiative23,0.95,100,0.25,5,Muscular major,0.69,Muscular medium,0.57,Falls medium,0.03
+,,,,,,,Other trauma minor,initiative24,0.42,100,0.25,5,Other trauma minor,0.12,Muscular major,0.45,Falls major,0.27
+,,,,,,,Other trauma medium,initiative25,0.26,100,0.25,5,Other trauma medium,0.00,Other trauma minor,0.56,Muscular minor,0.86
+,,,,,,,Other trauma major,initiative26,0.00,100,0.25,5,Other trauma major,0.15,Other trauma medium,0.88,Muscular medium,0.24
+,,,,,,,Arthritis Osteo,initiative27,0.29,100,0.25,5,Arthritis Osteo,0.84,Other trauma major,0.80,Muscular major,0.33
+,,,,,,,Arthritis Rheumatoid,initiative28,0.51,100,0.25,5,Arthritis Rheumatoid,0.89,Arthritis Osteo,0.24,Other trauma minor,0.77
+,,,,,,,Rehabilitation,initiative29,0.28,100,0.25,5,Rehabilitation,0.91,Arthritis Rheumatoid,0.03,Other trauma medium,0.03
+,,,,,,,Cancer Brain,initiative30,0.21,100,0.25,5,Cancer Brain,0.50,Rehabilitation,0.16,Other trauma major,0.10
+,,,,,,,Cancer Breast,initiative31,0.10,100,0.25,5,Cancer Breast,0.32,Cancer Brain,0.63,Arthritis Osteo,0.71
+,,,,,,,Cancer ENT,initiative32,0.63,100,0.25,5,Cancer ENT,0.54,Cancer Breast,0.24,Arthritis Rheumatoid,0.64
+,,,,,,,Cancer UGI,initiative33,0.09,100,0.25,5,Cancer UGI,0.09,Cancer ENT,0.42,Rehabilitation,0.59
+,,,,,,,Cancer LGI,initiative34,0.21,100,0.25,5,Cancer LGI,0.85,Cancer UGI,0.80,Cancer Brain,0.78
+,,,,,,,Cancer Liver,initiative35,0.18,100,0.25,5,Cancer Liver,0.95,Cancer LGI,0.76,Cancer Breast,0.58
+,,,,,,,Cancer Kidney,initiative36,0.79,100,0.25,5,Cancer Kidney,0.35,Cancer Liver,0.00,Cancer ENT,0.15
+,,,,,,,Cancer Pancreas,initiative37,0.70,100,0.25,5,Cancer Pancreas,0.33,Cancer Kidney,0.32,Cancer UGI,0.60
+,,,,,,,Cancer Blood,initiative38,0.88,100,0.25,5,Cancer Blood,0.76,Cancer Pancreas,0.75,Cancer LGI,0.91
+,,,,,,,Bowel Disorders,initiative39,0.41,100,0.25,5,Bowel Disorders,0.95,Cancer Blood,0.11,Cancer Liver,0.10
+,,,,,,,Gynaecology,initiative40,0.70,100,0.25,5,Gynaecology,0.42,Bowel Disorders,0.78,Cancer Kidney,0.48
+,,,,,,,Paeds General,initiative41,0.37,100,0.25,5,Paeds General,0.32,Gynaecology,0.70,Cancer Pancreas,0.77

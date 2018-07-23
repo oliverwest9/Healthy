@@ -25,7 +25,7 @@ data_input$Spec3 <- factor(data_input$Spec3, levels = Spec_input[,1]);
 
 
 
-#calculte the distance between sites
+#calculte the distance between 
 distance <- matrix(nrow = NSites, ncol = NSites)
 
 for (i in 1:NSites){

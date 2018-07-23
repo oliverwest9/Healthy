@@ -1,27 +1,20 @@
 
-#Index function for specialities, [To Avoid Working with Character Strings] [Possibly redundant.]
-Spec_index <- function(Spec_No){
-  Speciality_Char <- na.omit(Spec_input[Spec_input$Int_No == 2,]);
-  return(toString(Speciality_Char[1,1]))
-}
 
 #Calculate Growth Rates for intiatives.
 Soc_Growth <- as.data.frame(data_input$Y1)
 
-#10 is amount of specialities.[Temp Fix]
-Soc_Growth <- matrix(nrow = 10, ncol = Projection_length)
+Soc_Growth <- matrix(nrow = NSpeciality, ncol = Projection_length)
 Soc_Growth[,1] <- data_input$Y1;
 
 #Calculate Growth Rates. [Columns Labels, need to be sorted]
 for (i in 2:Projection_length)
 {
-  Soc_Growth[,i] <- Soc_Growth[,i-1]*data_input$Growth;
+  Soc_Growth[,i] <- Soc_Growth[,i-1]*(1+ data_input$Growth);
 }
 Soc_Growth_Round <- round(Soc_Growth)
 
 #Calculate Follow Up Reductions Saved
-#10 is amount of specialities.[Temp Fix]
-FU_Saved <- matrix(nrow = 10, ncol = Projection_length)
+FU_Saved <- matrix(nrow = NSpeciality, ncol = Projection_length);
 FU_Saved[,1] <- round(data_input$Y1*data_input$FU_Redn);
 
 for(i in 2:Projection_length)
@@ -31,7 +24,7 @@ for(i in 2:Projection_length)
 
 
 #Calculate cost per a year.
-Cost_Saved<- matrix(nrow = 10, ncol = Projection_length)
+Cost_Saved<- matrix(nrow = NSpeciality, ncol = Projection_length)
 Cost_Saved[,1] <- data_input$Y1*data_input$Cost;
 for (i in 2:Projection_length)
 {
@@ -49,6 +42,7 @@ for (i in 1:Years)
 }
 
 Diag_Saved_1 <- cbind(data_input$Spec1, Diag_Saved_1);
+Diag_Saved_1[,1] <- NULL;
 Diag_Saved_1[,2] <- NULL;
 
 #Calculate Growth Rates for secondary effects of intiatives.
@@ -61,6 +55,7 @@ for (i in 1:Years)
   Counter <- Counter+1;
 }
 Diag_Saved_2 <- cbind(data_input$Spec2, Diag_Saved_2);
+Diag_Saved_2[,1] <- NULL;
 Diag_Saved_2[,2] <- NULL;
 
 #Calculate Growth Rates for secondary effects of intiatives.
@@ -74,4 +69,5 @@ for (i in 1:Years)
 }
 
 Diag_Saved_3 <- cbind(data_input$Spec3, Diag_Saved_3);
+Diag_Saved_3[,1] <- NULL;
 Diag_Saved_3[,2] <- NULL;
