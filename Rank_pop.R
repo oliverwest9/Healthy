@@ -11,8 +11,7 @@ NSites <- 10
 Npopulation <- 10
 
 #load in data and adjust variables
-data_input <- read.csv(file="data_input.csv", header=TRUE) %>%
-  mutate(population_node = factor(population_node))
+data_input <- read.csv(file="data_input.csv", header=TRUE)
 
 #calculte the distance between sites
 distance_pop <- matrix(nrow = Npopulation, ncol = Npopulation)

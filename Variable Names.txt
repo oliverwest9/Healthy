@@ -1,1 +1,9 @@
+Main Input Sheet:
+R variable Called 'data_input', Whilst csv file called. "data_input.csv".
+[Note: Currently 2 input input methods. Need to be joined for ease of use, but does not effect outputs none the less]
+
 Variable Names:
+Projection_length = Length Model will run for.
+
+Out Puts:
+pop_rank_distance = ranking of distance between sites.

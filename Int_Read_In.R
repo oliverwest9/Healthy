@@ -8,33 +8,34 @@ Spec_index <- function(Spec_No){
 #Calculate Growth Rates for intiatives.
 Soc_Growth <- as.data.frame(data_input$Y1)
 
-#Assuming, we are letting the model run for 5 years [Can be changed later.]
-Years <- 5
+#10 is amount of specialities.[Temp Fix]
+Soc_Growth <- matrix(nrow = 10, ncol = Projection_length)
+Soc_Growth[,1] <- data_input$Y1;
 
 #Calculate Growth Rates. [Columns Labels, need to be sorted]
-for (i in 1:Years)
+for (i in 2:Projection_length)
 {
-  Soc_Growth$Years <- round(Soc_Growth*data_input$Growth);
+  Soc_Growth[,i] <- Soc_Growth[,i-1]*data_input$Growth;
 }
-
-#Short Term Fix, to unknown problem.
-Soc_Growth <- Soc_Growth[1,2] ;
-Soc_Growth <- cbind(Y1 =5, Soc_Growth);
+Soc_Growth_Round <- round(Soc_Growth)
 
 #Calculate Follow Up Reductions Saved
-FU_Saved <- round(as.data.frame((data_input$FU_Redn)*(data_input$Y1)));
+#10 is amount of specialities.[Temp Fix]
+FU_Saved <- matrix(nrow = 10, ncol = Projection_length)
+FU_Saved[,1] <- round(data_input$Y1*data_input$FU_Redn);
 
-for (i in 1:Years)
+for(i in 2:Projection_length)
 {
-  FU_Saved$Years <- round(data_input$FU_Redn*Soc_Growth$Years)
+  FU_Saved[,i] <- round(data_input$FU_Redn*Soc_Growth[,i]);
 }
 
-#Calculate cost per a year. [Needs to be finished]
-Cost_Saved <- as.data.frame(data_input$Cost*data_input$Y1);
 
-for (i in 1:Years)
+#Calculate cost per a year.
+Cost_Saved<- matrix(nrow = 10, ncol = Projection_length)
+Cost_Saved[,1] <- data_input$Y1*data_input$Cost;
+for (i in 2:Projection_length)
 {
-  #Cost_Saved$Years <- round(Cost_Saved$
+  Cost_Saved[,i] <- data_input$Cost*Soc_Growth[,i];
 }
 
 #Calculate Growth Rates for secondary effects of intiatives.
