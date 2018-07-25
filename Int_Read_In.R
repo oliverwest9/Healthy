@@ -31,6 +31,9 @@ for (i in 2:Projection_length)
   Cost_Saved[,i] <- data_input$Cost*Soc_Growth[,i];
 }
 
+
+Years <- Projection_length;
+
 #Calculate Growth Rates for secondary effects of intiatives.
 Counter <- 1;
 Diag_Saved_1 <- round(as.data.frame(data_input$Y1*data_input$Prob1));
