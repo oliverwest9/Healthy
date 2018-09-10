@@ -1,9 +1,6 @@
+#4
 ## OP_Data
 
-library(tidyverse);
-library(readxl);
-
-OP_Data <- read_excel('input_data_2.xlsx', sheet = 3);
 
 #Set Variables Up.
 NSpeciality <- nrow(OP_Data)
@@ -74,7 +71,7 @@ After_Care[,1] <- (OP_Data$Followup/OP_Data$New)*New_Diag_SP[,1];
 
 #Rounding error, from New_Diag causing errors here.
 for(i in 2:Projection_length){
-  After_Care[,i] <- (OP_Data$Followup/OP_Data$New)*New_Diag_SP[,i] - FU_Saved[,i]
+  After_Care[,i] <- (OP_Data$Followup/OP_Data$New)*New_Diag_SP[,i] - Saved_Tot[,i]
 }
 
 #AB-AG New Follow Ups.
@@ -113,12 +110,12 @@ for ( i in 2:(Projection_length +1)){
 #Percentage of New Cases Attended by Nurses.*Input Variable.*
 Nurse_perc_New <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
 
-Nurse_perc_New[,1] <- 0; 
-Nurse_perc_New[,2] <- 05;
-Nurse_perc_New[,3] <- 10;
-Nurse_perc_New[,4] <- 15;   
-Nurse_perc_New[,5] <- 20;
-Nurse_perc_New[,6] <- 25;
+Nurse_perc_New[,1] <- .0; 
+Nurse_perc_New[,2] <- .05;
+Nurse_perc_New[,3] <- .10;
+Nurse_perc_New[,4] <- .15;   
+Nurse_perc_New[,5] <- .20;
+Nurse_perc_New[,6] <- .25;
 
 #Percentage of Follow Up Cases Attended by Nurses.*Input Variable.*
 Nurse_perc_Follow <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
@@ -148,10 +145,32 @@ for (i in 2:Projection_length)
   Base_Follow[,i] <- Base_Follow[,i-1]*(1+Growth[,i]);
 }
 
-#New Cases Split by Nurse and GP.
-GP_New <- Base_New*(1-Nurse_perc_New);
-Nurse_New <- Base_New*(Nurse_perc_New);
-
 #Follow Up Cases Split by Nurse and GP
-GP_Follow <- Base_Follow*(1-Nurse_perc_Follow);
-Nurse_Follow <- Base_Follow*(Nurse_perc_Follow);
+GP_Follow <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
+GP_Follow[,1] <- (OP_Data$Followup)*(1-Nurse_perc_Follow[,1]);
+
+for (i in 1:Projection_length+1){
+  GP_Follow[,i] <- After_Care[,i-1]*(1-Nurse_perc_Follow[,i]);
+}
+
+Nurse_Follow <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
+Nurse_Follow[,1] <- (OP_Data$Followup)*(Nurse_perc_Follow[,1]);
+
+for (i in 1:Projection_length+1){
+  Nurse_Follow[,i] <- After_Care[,i-1]*(Nurse_perc_Follow[,i]);
+}
+
+#New Cases, Split by Nurse and GP
+GP_New <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
+GP_New[,1] <- (OP_Data$New)*(1-Nurse_perc_New[,1]);
+
+for (i in 1:Projection_length+1){
+  GP_New[,i] <- New_Diag_SP[,i-1]*(1-Nurse_perc_New[,i])
+}
+
+Nurse_New <- matrix(nrow = NSpeciality, ncol = Projection_length+1);
+Nurse_New[,1] <- (OP_Data$New)*(Nurse_perc_New[,1]);
+
+for (i in 1:Projection_length+1){
+  Nurse_New[,i] <- New_Diag_SP[,i-1]*(Nurse_perc_New[,i])
+}

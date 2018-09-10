@@ -1,4 +1,4 @@
-
+#1
 #install requared pachages
 library(tidyverse)
 library(Matrix)
@@ -13,6 +13,9 @@ Npopulation <- 10
 #load in data and adjust variables
 data_input <- read.csv(file="data_input.csv", header=TRUE) %>%
   mutate(site = factor(site))
+
+#Read In Data, need to be combined.
+OP_Data <- read_excel('input_data_2.xlsx', sheet = 3);
 
 #Read in Specialities List
 Spec_input <- read.csv(file="Specialty.csv", header=TRUE)
