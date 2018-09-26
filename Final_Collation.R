@@ -347,17 +347,19 @@ for (i in 1:Projection_length+1){
 ###########5#############
 #########################
 
-#Calculate amount of working hours available in a year. 
+#Calculate amount of working hours available in a year.
+#Define a yearly 10% reduction in hours worked by GP's.
 GP_Hours_Available <- matrix(nrow = Projection_length, ncol = NSites);
-
-for (i in 1:Projection_length){
-  GP_Hours_Available[i,] <- 250;
+GP_Hours_Available[1,] <- 250;
+for (i in 2:Projection_length){
+  GP_Hours_Available[i,] <- GP_Hours_Available[i-1,]*0.90;
 }
 
 #Define Clinic Parameters [Fixed for now.]
 #GP Working Hours
 GP_Day_length <- 7;
 #Rooms per a clinic
+Rooms_Clinic <- matrix(nrow = Projection_length, ncol = NSites)
 Rooms_Clinic <- 1;
 #Lists per a day
 Lists_Clinc <- 1;
