@@ -424,5 +424,5 @@ HR_Cost_Year <- HR_Cost_Day*GP_Hours_Available;
 #Calculate Cost of Intiatives.
 Intiative_Cost <- matrix(nrow = Projection_length, ncol = NSites);
 for (i in 1:Projection_length){
-  Intiative_Cost = sum(Cost_Saved[i,]);
+  Intiative_Cost = sum(Cost_Saved[i,])/Nsites;
 }
